@@ -16,7 +16,10 @@ export class HomePage {
       senha: ""
     };
 
-  constructor(public navCtrl: NavController, public menu: MenuController, public auth: AuthService) {
+  constructor(
+    public navCtrl: NavController, 
+    public menu: MenuController, 
+    public auth: AuthService) {
   }
 
   ionViewWillEnter(){
@@ -28,21 +31,21 @@ export class HomePage {
   }
 
   ionViewDidEnter(){
-    this.auth.refreshToken().subscribe(response => {
-      this.auth.successFulLogin(response.headers.get('Authorization'));
-      this.navCtrl.setRoot('CategoriasPage');
+    this.auth.refreshToken()
+      .subscribe(response => {
+        this.auth.successFulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriasPage');
     },
-
     error => {});
 
   }
 
   login(){
-    this.auth.authenticate(this.creds).subscribe(response => {
-      this.auth.successFulLogin(response.headers.get('Authorization'));
-      this.navCtrl.setRoot('CategoriasPage');
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+        this.auth.successFulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriasPage');
     },
-
     error => {});
     
   }

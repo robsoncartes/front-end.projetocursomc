@@ -9,19 +9,39 @@ export class StorageService {
 
     getLocalUser(): LocalUser{
         let usr = localStorage.getItem(STORAGE_KEYS.localUser);
-        return (usr == null) ? null : JSON.parse(usr);
+        if(usr == null){
+            return null;
+        }
+        else{
+            return JSON.parse(usr);
+        }
     }
 
     setLocalUser(obj: LocalUser){
-        obj == null ? localStorage.removeItem(STORAGE_KEYS.localUser) : localStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
+        if(obj == null){
+            localStorage.removeItem(STORAGE_KEYS.localUser);
+        }
+        else{
+            localStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
+        }
     }
 
     getCart() : Cart{
         let str = localStorage.getItem(STORAGE_KEYS.cart);
-        return (str != null) ? JSON.parse(str) : null;
+        if(str != null){
+            return JSON.parse(str);
+        }
+        else{
+            return null;
+        }
     }
 
     setCart(obj : Cart){
-        (obj != null) ? localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(obj)) : localStorage.removeItem(STORAGE_KEYS.cart);
+        if(obj != null){
+            localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(obj));
+        }
+        else{
+            localStorage.removeItem(STORAGE_KEYS.cart);
+        }
     }
 }

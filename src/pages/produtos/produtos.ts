@@ -13,7 +13,10 @@ export class ProdutosPage {
 
   items : ProdutoDto[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public produtoService: ProdutoService) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public produtoService: ProdutoService) {
   }
 
   ionViewDidLoad() {

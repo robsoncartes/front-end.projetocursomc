@@ -14,13 +14,18 @@ export class ProfilePage {
 
   cliente: ClienteDto;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: StorageService, public clienteService: ClienteService) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public storageService: StorageService, 
+    public clienteService: ClienteService) {
   }
 
   ionViewDidLoad() {
-    let localUser = this.storage.getLocalUser();
+    let localUser = this.storageService.getLocalUser();
     if(localUser && localUser.email){
-      this.clienteService.findByEmail(localUser.email).subscribe(response => {this.cliente = response;
+      this.clienteService.findByEmail(localUser.email)
+        .subscribe(response => {this.cliente = response;
       this.getImageIfExists();
       }, 
       

@@ -36,7 +36,8 @@ export class ProdutoDetailsPage {
     this.produtoService.getmageFromBucket(this.item.id)
       .subscribe(response => {
         this.item.imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${this.item.id}.jpg`;
-      }, error => {});
+      }, 
+      error => {});
   }
 
   addToCart(produto: ProdutoDto) {
