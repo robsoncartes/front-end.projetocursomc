@@ -17,7 +17,6 @@ export class CartService {
 
     getCart(): Cart {
         let cart: Cart = this.storageService.getCart();
-        //return (cart == null) ? this.createOrClearCart() : cart;
         if (cart == null){
             cart = this.createOrClearCart();
         }
@@ -36,7 +35,7 @@ export class CartService {
 
     removeProduto(produto: ProdutoDto) : Cart {
         let cart = this.getCart();
-        let position = cart.items.findIndex(x => x.produto.id == x.produto.id);
+        let position = cart.items.findIndex(x => x.produto.id == produto.id);
         if(position != -1){
             cart.items.splice(position, 1);
         }
